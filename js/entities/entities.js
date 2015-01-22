@@ -38,3 +38,8 @@
  // for entities it wants 3 parameters
  // the difference between the spriteheight and width vs the regular height and width is that sprite width and sprite height are passing the main info.
  // the regular width and the height is telling the screen what ammount of space to preserve
+// this is for the player to move right
+//velocity represnts our current position
+// me.timer.tick makes the movement look smooth
+//adds to the position of my x by the velocity defined above
+//delta is the change in time that has happened
