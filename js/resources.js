@@ -4,7 +4,10 @@ game.resources = [
 	 * @example
 	 */
 	 {name: "background-tiles", type:"image", src: "data/img/background-tiles.png"},
-      {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
+     {name: "meta-tiles", type:"image", src: "data/img/meta-tiles.png"},
+     {name: "player", type:"image", src: "data/img/orcSpear.png"},
+      // this line above, is where we are loading the image or "player" that we are using
+
 	/* Atlases 
 	 * @example
 	 * {name: "example_tps", type: "tps", src: "data/img/example_tps.json"},
