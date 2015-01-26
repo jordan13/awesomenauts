@@ -83,3 +83,9 @@
 // me.timer.tick makes the movement look smooth
 //adds to the position of my x by the velocity defined above
 //delta is the change in time that has happened
+//the speed is 80 miliseconds
+// what the If (!this statment is saying is, that we dont want to start the walk animation, if we are already walking
+//// if we dont add this line the animations wont be able to animate on the fly
+// this.flipX fixes the characters turning
+
+
