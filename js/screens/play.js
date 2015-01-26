@@ -17,6 +17,8 @@ game.PlayScreen = me.ScreenObject.extend({
         
 
         me.input.bindKey(me.input.KEY.RIGHT, "right");
+        me.input.bindKey(me.input.KEY.LEFT, "left");
+        me.input.bindKey(me.input.KEY.UP, "jump", true);
         //this is where we will be adding our player
         //we will do that by adding our instances of the player
         // the z variable is the distance of the player to the front of the screen

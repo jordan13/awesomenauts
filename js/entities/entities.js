@@ -12,26 +12,66 @@
     	  	}
 		}]);
 
-    	this.body.setVelocity(5, 0);
+    	this.body.setVelocity(5, 20);
 
- 
+    	this.renderable.addAnimation("idle", [78]);
+    	this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
+
+    	this.renderable.setCurrentAnimation("idle");
+
+
+        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
  	},
 
- 	update: function(delta){
+ 	   update: function(delta){
 
-   		if(me.input.isKeyPressed ("right")){
+   		 if(me.input.isKeyPressed ("right")){
+   		 	this.renderable.flipX(true);
  	     // sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
  	      this.body.vel.x += this.body.accel.x * me.timer.tick;
- 	   }else{
-          this.body.vel.x = 0;
-
+ 	      this.renderable.setCurrentAnimation("walk");
 
  	   }
+		else if(me.input.isKeyPressed ("left")){
+			this.renderable.flipX(false);
+ 	     // sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
+ 	      this.body.vel.x -= this.body.accel.x * me.timer.tick;
+ 	      this.flipX(true);
+ 	   
+ 	   	} 
 
+ 	   	 else{
+          this.body.vel.x = 0;
+
+       if(this.body.vel.x !== 0){
+   	  	if(!this.renderable.isCurrentAnimation("walk")){
+   		this.renderable.setCurrentAnimation("walk");
+   	}
+
+   	} 
+
+
+
+   	 else{
+      this.renderable.setCurrentAnimation("idle");    
+   	}
+ 	   }
+       	 if(me.input.isKeyPressed("jump")) {
+          
+          if(!this.body.jumping && !this.body.falling) {
+              this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+              this.body.jumping = true;
+           }
+       }
+ 	   
  	   this.body.update(delta);
+ 	   this._super(me.Entity, "update", [delta]);
  	   return true;
 
    	}
+   	
+
+
  });
  //the reason why this is a class, it gets to have both letters be capital
  // the init: is our constructor function
