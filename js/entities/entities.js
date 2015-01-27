@@ -168,3 +168,8 @@ game.EnemyBaseEntity = me.Entity.extend ({
 
 });
 
+//This.broken is the variable we make to say that the tower is not destroyed
+//this.health represents how much health you begin with
+//this.type is for later collisions
+//what the if statement does, is it looks at your health and determines if you are dead
+// always call the super in update functions
