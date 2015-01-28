@@ -104,14 +104,20 @@ game.PlayerBaseEntity = me.Entity.extend ({
     this.health = 10;
     this.alwaysUpdate = true;
     this.body.onCollision = this.onCollision.bind(this);
-
+    this.renderable.addAnimation("idle", [0]);
+    this.renderable.addAnimation("broken", [1]);
+    this.renderable.setCurrentAnimation("idle");
     this.type = "PlayerBaseEntity";
+
+
+
 
 },
 
   update:function(delta){
   	if(this.health<=0) {
-  		this.broken = true;	
+  		this.broken = true;
+  		this.renderable.setCurrentAnimation("broken");	
   	}
   	this.body.update(delta);
  
@@ -145,7 +151,9 @@ game.EnemyBaseEntity = me.Entity.extend ({
     this.health = 10;
     this.alwaysUpdate = true;
     this.body.onCollision = this.onCollision.bind(this);
-
+    this.renderable.addAnimation("idle", [0]);
+    this.renderable.addAnimation("broken", [1]);
+    this.renderable.setCurrentAnimation("idle");
     this.type = "EnemyBaseEntity";
 
 },
@@ -153,6 +161,7 @@ game.EnemyBaseEntity = me.Entity.extend ({
   update:function(delta){
   	if(this.health<=0) {
   		this.broken = true;	
+  		this.renderable.setCurrentAnimation("Broken");
   	}
   	this.body.update(delta);
  
