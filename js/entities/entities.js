@@ -182,3 +182,7 @@ game.EnemyBaseEntity = me.Entity.extend ({
 //this.type is for later collisions
 //what the if statement does, is it looks at your health and determines if you are dead
 // always call the super in update functions
+//we then set the animations on the player and enemy base
+// when we break the tower we want to set the animation to broken
+//renderable is a class that they built in melon js, we use it to do most animations
+//me.game.viewport allows us to follow the player

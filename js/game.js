@@ -53,3 +53,4 @@ var game = {
 		me.state.change(me.state.PLAY);
 	}
 };
+// we dont need to set the player base to true because there is only one
