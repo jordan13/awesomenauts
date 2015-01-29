@@ -16,60 +16,64 @@
 
     	this.renderable.addAnimation("idle", [78]);
     	this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
-
+        this.renderable.addAnimation("attack", [65, 66, 67, 68, 69, 70, 71, 72], 80);
     	this.renderable.setCurrentAnimation("idle");
 
 
         me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
  	},
 
- 	   update: function(delta){
+ 	    update: function(delta){
 
-   		 if(me.input.isKeyPressed ("right")){
-   		 	this.renderable.flipX(true);
- 	     // sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
- 	      this.body.vel.x += this.body.accel.x * me.timer.tick;
- 	      this.renderable.setCurrentAnimation("walk");
+   		 	if(me.input.isKeyPressed ("right")){
+   		 		this.renderable.flipX(true);
+ 	         	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
+ 	        	this.body.vel.x += this.body.accel.x * me.timer.tick;
+ 	        	this.renderable.setCurrentAnimation("walk");
+	 	   	}
+			else if(me.input.isKeyPressed ("left")){
+				this.renderable.flipX(false);
+ 	        	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
+ 	        	this.body.vel.x -= this.body.accel.x * me.timer.tick;
+ 	        	this.flipX(true);
+ 	       	} 
 
- 	   }
-		else if(me.input.isKeyPressed ("left")){
-			this.renderable.flipX(false);
- 	     // sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
- 	      this.body.vel.x -= this.body.accel.x * me.timer.tick;
- 	      this.flipX(true);
- 	   
- 	   	} 
+ 	   	 	else{
+         		this.body.vel.x = 0;
+           
+       			if(this.body.vel.x !== 0){
+   	  				if(!this.renderable.isCurrentAnimation("walk")){
+   		 				this.renderable.setCurrentAnimation("idle");  
+   					}
+   				} 
 
- 	   	 else{
-          this.body.vel.x = 0;
+	   		}
 
-       if(this.body.vel.x !== 0){
-   	  	if(!this.renderable.isCurrentAnimation("walk")){
-   		this.renderable.setCurrentAnimation("walk");
-   	}
-
-   	} 
-
-
-
-   	 else{
-      this.renderable.setCurrentAnimation("idle");    
-   	}
- 	   }
-       	 if(me.input.isKeyPressed("jump")) {
+ 	           	   if(me.input.isKeyPressed("jump")) {
           
-          if(!this.body.jumping && !this.body.falling) {
+           if(!this.body.jumping && !this.body.falling) {
               this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
               this.body.jumping = true;
            }
-       }
- 	   
- 	   this.body.update(delta);
- 	   this._super(me.Entity, "update", [delta]);
- 	   return true;
 
-   	}
-   	
+           }
+        }
+ 	   
+ 	       this.body.update(delta);
+ 	       this._super(me.Entity, "update", [delta]);
+ 	       return true;
+
+        }
+           if(me.input.isKeyPressed("attack")){
+    	     console.log("attack");
+    	   if(!this.renderable.isCurrentAnimation("attack")){
+    		 console.log("attack");
+    		 //sets current animation to attack and once it is over it goes back to current animation
+    		 this.renderable.setCurrentAnimation("attack");
+    		 // this makes it so that the next time we start sequence, we begin from first animation, not wherever we left off when we switched
+    		 this.renderable.setAnimationFrame();
+    	}
+ 	     }
 
 
  });
