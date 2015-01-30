@@ -40,7 +40,7 @@
  	      }
            
  	      if(me.input.isKeyPressed("jump") && !this.body.jumping  && !this.body.falling){
- 	      		this.jumping = true;
+ 	      		this.body.jumping = true;
  	      		this.body.vel.y -= this.body.accel.y * me.timer.tick;
 
  	      }
@@ -220,3 +220,10 @@ game.EnemyBaseEntity = me.Entity.extend ({
 // when we break the tower we want to set the animation to broken
 //renderable is a class that they built in melon js, we use it to do most animations
 //me.game.viewport allows us to follow the player
+// This.facing keeps track of hich direction, your character is going
+//me.collision is basically just checking for collisions
+//what is going on is we are passing our parameter to our function collide.handler
+//response.a represents our player
+// response.b represents whatever we are colliding with
+//vary dif represents the difference between my players y position and the bases y position
+// what we want to happen is our Y variable to be dealt with first
