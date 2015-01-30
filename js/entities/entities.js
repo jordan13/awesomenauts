@@ -35,7 +35,7 @@
 
  	        if(me.input.isKeyPressed("attack")){
  	      	  if(!this.renderable.isCurrentAnimation("attack")){
- 	      	    console.log(!this.renderable.isCurrentAnimation("attack")){
+ 	      	    console.log(!this.renderable.isCurrentAnimation("attack"));
  	      		// sets the current animation to attack and once it is over, goes back to idle animation
  	      		this.renderable.setCurrentAnimation("attack", "idle");
  	      		// the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
@@ -46,7 +46,7 @@
 
           else if(this.body.vel.x !== 0){
              if(!this.renderable.isCurrentAnimation("walk")){
-          	 this.renderable.setCurrentAnimation("walk");
+          	   this.renderable.setCurrentAnimation("walk");
        
             }
          
@@ -57,7 +57,7 @@
  	        
  	      if(me.input.isKeyPressed("attack")){
  	      	if(!this.renderable.isCurrentAnimation("attack")){
- 	      	    console.log(!this.renderable.isCurrentAnimation("attack")){
+ 	      	    console.log(!this.renderable.isCurrentAnimation("attack"));
  	      		// sets the current animation to attack and once it is over, goes back to idle animation
  	      		this.renderable.setCurrentAnimation("attack", "idle");
  	      		// the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
