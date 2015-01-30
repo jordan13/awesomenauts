@@ -13,6 +13,7 @@
 		}]);
 
     	this.body.setVelocity(5, 20);
+    	this.facing = "right";
 
     	this.renderable.addAnimation("idle", [78]);
     	this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
@@ -28,8 +29,10 @@
    		 	if(me.input.isKeyPressed ("right")){
  	         	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
  	        	this.body.vel.x += this.body.accel.x * me.timer.tick;
+ 	        	this.facing = "right";
  	        	this.flipX(true);
  	        } else if(me.input.isKeyPressed("left")){
+ 	        	this.facing.left = "left";
  	        	this.body.vel.x -= this.body.accel.x * me.timer.tick;
  	        	this.flipX(false);
  	        }else{ 
@@ -76,10 +79,26 @@
 
  	    }
 
+ 	       me.collision.check(this, true, this.collideHandler.bind(this), true);
  	       this.body.update(delta);
  	    
  	       this._super(me.Entity, "update", [delta]);
  	       return true;
+ 	    },
+
+ 	    collideHandler: function(response){
+ 	    	if(response.b.type==='EnemyBaseEntity'){
+ 	    		var ydif = this.pos.y - response.b.pos.y;
+ 	    		var xdif = this.pos.x - response.b.pos.x;
+
+ 	    		if(xdif>-35 && this.facing=== 'right' && (xdif<0)){
+ 	    			this.body.vel.x = 0;
+ 	    			this.pos.x = this.pos.x -1;
+ 	    		}else if (xdif<70 && this.facing==='left' && xdif>0) {
+ 	    			this.body.vel.x = 0;
+ 	    			this.pos.x = this.pos.x +1;
+ 	    		}
+ 	    	}
  	    }
    });
 	
