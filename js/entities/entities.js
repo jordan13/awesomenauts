@@ -29,9 +29,19 @@
  	         	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
  	        	this.body.vel.x += this.body.accel.x * me.timer.tick;
  	        	this.flipX(true);
+ 	        } else if(me.input.isKeyPressed("left")){
+ 	        	this.body.vel.x -= this.body.accel.x * me.timer.tick;
+ 	        	this.flipX(false);
  	        }else{ 
               this.body.vel.x = 0;
  	      }
+           
+ 	      if(me.input.isKeyPressed("jump") && !this.body.jumping  && !this.body.falling){
+ 	      		this.jumping = true;
+ 	      		this.body.vel.y -= this.body.accel.y * me.timer.tick;
+
+ 	      }
+
 
  	        if(me.input.isKeyPressed("attack")){
  	      	  if(!this.renderable.isCurrentAnimation("attack")){
