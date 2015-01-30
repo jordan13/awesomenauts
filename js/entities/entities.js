@@ -26,61 +26,43 @@
  	    update: function(delta){
 
    		 	if(me.input.isKeyPressed ("right")){
-   		 		this.renderable.flipX(true);
  	         	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
  	        	this.body.vel.x += this.body.accel.x * me.timer.tick;
- 	        	this.renderable.setCurrentAnimation("walk");
-	 	   	}
-			else if(me.input.isKeyPressed ("left")){
-				this.renderable.flipX(false);
- 	        	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
- 	        	this.body.vel.x -= this.body.accel.x * me.timer.tick;
  	        	this.flipX(true);
- 	       	} 
-
- 	   	 	else{
-         		this.body.vel.x = 0;
-           
-       			  if(this.body.vel.x !== 0){
-   	  				if(!this.renderable.isCurrentAnimation("walk")){
-   		 				this.renderable.setCurrentAnimation("walk");
-   		 				
-   		 		 }else{
-   		 		   this.renderable.setCurrentAnimation("idle");  
-   					}
-   				} 
-
-	   		}
-
-           		if(me.input.isKeyPressed("attack")){
-    	   			if(!this.renderable.isCurrentAnimation("attack")){
-    	   			console.log(this.renderable.isCurrentAnimation("attack"))
-    			 	//sets current animation to attack and once it is over it goes back to current animation
-    		 		this.renderable.setCurrentAnimation("attack", "idle");
-    		 		// this makes it so that the next time we start sequence, we begin from first animation, not wherever we left off when we switched
-    		 		this.renderable.setAnimationFrame();
-    	}
- 	     }
- 	       
- 	       		if(me.input.isKeyPressed("jump")) {
-          
-           		  if(!this.body.jumping && !this.body.falling) {
-              		this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
-              		this.body.jumping = true;
-           		}
+ 	        }else{ 
+              this.body.vel.x = 0;
+ 	      }
+         
+          if(this.body.vel.x !== 0){
+             if(!this.renderable.isCurrentAnimation("walk")){
+          	 this.renderable.setCurrentAnimation("walk");
+       
             }
-  		   
- 	       		else {
- 	       		this.body.update(delta);
- 	       		this._super(me.Entity, "update", [delta]);
- 	       		return true;
+         
+          }else{
+             this.renderable.setCurrentAnimation("idle");
+
           }
+ 	        
+ 	      if(me.input.isKeyPressed("attack")){
+ 	      	if(!this.renderable.isCurrentAnimation("attack"));
+ 	      		// sets the current animation to attack and once it is over, goes back to idle animation
+ 	      		this.renderable.setCurrentAnimation("walk");
+ 	      		// the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
+ 	      		this.renderable.setAnimationFrame();
+ 	      }
 
-        }
+ 	    }
 
+ 	       this.body.update(delta);
+ 	    
+ 	       this._super(me.Entity, "update", [delta]);
+ 	       return true;
+ 	    }
+   });
+	
 // END OF UPDATE FUNCTION ABOVE!!!!!!
 
- });
  //the reason why this is a class, it gets to have both letters be capital
  // the init: is our constructor function
  // for entities it wants 3 parameters
@@ -104,7 +86,7 @@ game.PlayerBaseEntity = me.Entity.extend ({
 			spritewidth: "100",
 			spriteheight: "100",
 			getShape: function (){
-				return (new me.Rect(0, 0, 100, 100)).toPolygon();
+				return (new me.Rect(0, 0, 100, 80)).toPolygon();
 			}
 
 	}]);
@@ -116,8 +98,6 @@ game.PlayerBaseEntity = me.Entity.extend ({
     this.renderable.addAnimation("broken", [1]);
     this.renderable.setCurrentAnimation("idle");
     this.type = "PlayerBaseEntity";
-
-
 
 
 },
@@ -150,7 +130,7 @@ game.EnemyBaseEntity = me.Entity.extend ({
 			spritewidth: "100",
 			spriteheight: "100",
 			getShape: function (){
-				return (new me.Rect(0, 0, 100, 100)).toPolygon();
+				return (new me.Rect(0, 0, 100, 80)).toPolygon();
 			}
 
 	}]);
