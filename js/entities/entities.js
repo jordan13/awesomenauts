@@ -41,40 +41,44 @@
  	   	 	else{
          		this.body.vel.x = 0;
            
-       			if(this.body.vel.x !== 0){
+       			  if(this.body.vel.x !== 0){
    	  				if(!this.renderable.isCurrentAnimation("walk")){
-   		 				this.renderable.setCurrentAnimation("idle");  
+   		 				this.renderable.setCurrentAnimation("walk");
+   		 				
+   		 		 }else{
+   		 		   this.renderable.setCurrentAnimation("idle");  
    					}
    				} 
 
 	   		}
 
- 	           	   if(me.input.isKeyPressed("jump")) {
-          
-           if(!this.body.jumping && !this.body.falling) {
-              this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
-              this.body.jumping = true;
-           }
-
-           }
-        }
- 	   
- 	       this.body.update(delta);
- 	       this._super(me.Entity, "update", [delta]);
- 	       return true;
-
-        }
-           if(me.input.isKeyPressed("attack")){
-    	     console.log("attack");
-    	   if(!this.renderable.isCurrentAnimation("attack")){
-    		 console.log("attack");
-    		 //sets current animation to attack and once it is over it goes back to current animation
-    		 this.renderable.setCurrentAnimation("attack");
-    		 // this makes it so that the next time we start sequence, we begin from first animation, not wherever we left off when we switched
-    		 this.renderable.setAnimationFrame();
+           		if(me.input.isKeyPressed("attack")){
+    	   			if(!this.renderable.isCurrentAnimation("attack")){
+    	   			console.log(this.renderable.isCurrentAnimation("attack"))
+    			 	//sets current animation to attack and once it is over it goes back to current animation
+    		 		this.renderable.setCurrentAnimation("attack", "idle");
+    		 		// this makes it so that the next time we start sequence, we begin from first animation, not wherever we left off when we switched
+    		 		this.renderable.setAnimationFrame();
     	}
  	     }
+ 	       
+ 	       		if(me.input.isKeyPressed("jump")) {
+          
+           		  if(!this.body.jumping && !this.body.falling) {
+              		this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+              		this.body.jumping = true;
+           		}
+            }
+  		   
+ 	       		else {
+ 	       		this.body.update(delta);
+ 	       		this._super(me.Entity, "update", [delta]);
+ 	       		return true;
+          }
 
+        }
+
+// END OF UPDATE FUNCTION ABOVE!!!!!!
 
  });
  //the reason why this is a class, it gets to have both letters be capital
