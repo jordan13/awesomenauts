@@ -230,3 +230,8 @@ game.EnemyBaseEntity = me.Entity.extend ({
 //vary dif represents the difference between my players y position and the bases y position
 // what we want to happen is our Y variable to be dealt with first
 // we have not used attack var yet
+//this.health-- makes the health go down one
+//the attack animation will detect collisions over and over
+//this.now keeps track of the time in the game
+//this.lastAttack is for a hit delay
+//everytime you call for an update you want to change this.now
