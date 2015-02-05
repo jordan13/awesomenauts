@@ -14,6 +14,9 @@
 
     	this.body.setVelocity(5, 20);
     	this.facing = "right";
+    	this.now = new Date().getTime();
+    	this.lastHit = this.now;
+    	this.lastAttack = new Date().getTime();
 
     	this.renderable.addAnimation("idle", [78]);
     	this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
@@ -25,7 +28,7 @@
  	},
 
  	    update: function(delta){
-
+ 	    	this.now = new Date().getTime();
    		 	if(me.input.isKeyPressed ("right")){
  	         	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
  	        	this.body.vel.x += this.body.accel.x * me.timer.tick;
@@ -57,27 +60,16 @@
 
  	    }
 
-          else if(this.body.vel.x !== 0){
+          else if(this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")){
              if(!this.renderable.isCurrentAnimation("walk")){
           	   this.renderable.setCurrentAnimation("walk");
        
             }
          
-          }else{
+          }else if (!this.renderable.isCurrentAnimation("attack")){
              this.renderable.setCurrentAnimation("idle");
 
           }
- 	        
- 	      if(me.input.isKeyPressed("attack")){
- 	      	if(!this.renderable.isCurrentAnimation("attack")){
- 	      	    console.log(!this.renderable.isCurrentAnimation("attack"));
- 	      		// sets the current animation to attack and once it is over, goes back to idle animation
- 	      		this.renderable.setCurrentAnimation("attack", "idle");
- 	      		// the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
- 	      		this.renderable.setAnimationFrame();
- 	      }
-
- 	    }
 
  	       me.collision.check(this, true, this.collideHandler.bind(this), true);
  	       this.body.update(delta);
@@ -90,7 +82,7 @@
  	    	if(response.b.type==='EnemyBaseEntity'){
  	    		var ydif = this.pos.y - response.b.pos.y;
  	    		var xdif = this.pos.x - response.b.pos.x;
-
+   
  	    		if(ydif<-40 && xdif< 70 && xdif>-35){
  	    			this.body.falling = false;
  	    			this.body.vel.y = -1;
@@ -101,10 +93,17 @@
  	    		}else if(xdif<70 && this.facing==='left' && xdif>0) {
  	    			this.body.vel.x = 0;
  	    			this.pos.x = this.pos.x +1;
-
  	    	   }
+
+ 	    	    if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= 1000){
+ 	    			console.log("tower Hit");
+ 	    			this.lastHit = this.now;
+ 	    			response.b.loseHealth();
  	    	}
  	    }
+ 	
+ 	 }
+   
    });
 	
 // END OF UPDATE FUNCTION ABOVE!!!!!!
@@ -195,7 +194,7 @@ game.EnemyBaseEntity = me.Entity.extend ({
   update:function(delta){
   	if(this.health<=0) {
   		this.broken = true;	
-  		this.renderable.setCurrentAnimation("Broken");
+  		this.renderable.setCurrentAnimation("broken");
   	}
   	this.body.update(delta);
  
@@ -206,8 +205,11 @@ game.EnemyBaseEntity = me.Entity.extend ({
 
   onCollision: function(){
   	
-  }
+  },
 
+  loseHealth: function(){
+  	this.health--;
+  }
 
 });
 
@@ -227,3 +229,4 @@ game.EnemyBaseEntity = me.Entity.extend ({
 // response.b represents whatever we are colliding with
 //vary dif represents the difference between my players y position and the bases y position
 // what we want to happen is our Y variable to be dealt with first
+// we have not used attack var yet
