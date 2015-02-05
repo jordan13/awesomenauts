@@ -302,3 +302,5 @@ game.GameManager = Object.extend ({
 //we want to make sure the game manager is continuosuly updating
 //math.round checks to see if we have a multiple of 10
 // this is mod %, it will check and see if we have a multiple of 10
+// We want the creeps to drop to the ground and begin walking
+// delta represents time as a parameter 
