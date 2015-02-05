@@ -287,3 +287,8 @@ game.GameManager = Object.extend ({
 //this.now keeps track of the time in the game
 //this.lastAttack is for a hit delay
 //everytime you call for an update you want to change this.now
+// our GameManager is not something that will appear on the screen
+//It is not an entity it is just something we are using
+//we want to make sure the game manager is continuosuly updating
+//math.round checks to see if we have a multiple of 10
+// this is mod %, it will check and see if we have a multiple of 10
