@@ -330,3 +330,7 @@ game.GameManager = Object.extend ({
 // this is mod %, it will check and see if we have a multiple of 10
 // We want the creeps to drop to the ground and begin walking
 // delta represents time as a parameter 
+//We want the creeps to drop to the ground and begin walking
+// delta represents time as a parameter
+// this.attacking lets us know if the nemy is currently attacking
+// this.pos.x keeps moving the creep
