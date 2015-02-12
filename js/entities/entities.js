@@ -356,3 +356,7 @@ game.GameManager = Object.extend ({
 // delta represents time as a parameter
 // this.attacking lets us know if the nemy is currently attacking
 // this.pos.x keeps moving the creep
+// we do not want our creep to hit multiple things 
+//we put an if else statement so it can only be hitting one of those things
+//To the right the x value will be bigger 
+//The position change will only happen when the creep is attacking
