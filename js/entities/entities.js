@@ -492,3 +492,6 @@ game.GameManager = Object.extend ({
 //we put an if else statement so it can only be hitting one of those things
 //To the right the x value will be bigger 
 //The position change will only happen when the creep is attacking
+//  what we want our if else statement in our player function to do is to hurt the creep only when we are attacking
+// we are working on the ways we can attack the creeps
+// | | this represents and
