@@ -106,8 +106,29 @@
  	    			this.lastHit = this.now;
  	    			response.b.loseHealth();
  	    	}
- 	    }
- 	
+ 	    }else if(response.b.type==='EnemyCreep') {
+          var xdif = this.pos.x - response.b.pos.x;
+          var ydif = this.pos.y - response.b.pos.y;
+
+          if (xdif>0) {
+              this.pos.x = this.pos.x + 1;
+              if(this.facing==="left"){
+                this.body.vel.x = 0;
+              }
+          }else{
+            this.pos.x = this.pos.x - 1;
+             if(this.facing==="right"){
+                this.body.vel.x = 0;
+              }
+          } 
+          if(this.renderable.isCurrentAnimation('attack') && this.now-this.lastHit >= 1000
+              && (Math.abs(ydif) <=40) && 
+              (((xdif>0) && this.facing==="left") || ((xdif<0) && this.facing==="right")))
+          {
+            this.lastHit = this.now;
+            response.b.loseHealth(1);
+          }
+      }
  	 }
    
    });
@@ -207,6 +228,12 @@ game.EnemyBaseEntity = me.Entity.extend ({
   		this.renderable.setCurrentAnimation("broken");
   	}
   	this.body.update(delta);
+
+    // if(me.input.isKeyPressed("auto") && !this.body.jumping  && !this.body.falling){
+            // this.body.jumping = true;
+            // this.body.vel.y -= this.body.accel.y * me.timer.tick;
+
+        // }
  
   	this._super(me.Entity, "update", [delta]);
   	return true;
@@ -249,7 +276,81 @@ game.EnemyCreep = me.Entity.extend({
 		this.renderable.setCurrentAnimation("walk");
 	},
 
+   // test 
+  // public class Enemy : MonoBehaviour {
+
+ //public float speed = 4f;
+ //public float jetPackSpeed = 0.3f;
+ //public float jumpSpeed = 8f;
+ //public float gravity = 10;
+ 
+ //private Transform _Player; 
+ //private CharacterController character;
+ //private Transform tr;
+ //private float vSpeed = 0f;
+ //private bool jump = false;
+ 
+ //void Start ()
+ //{
+     //_Player = GameObject.FindGameObjectWithTag("Player").transform;
+     //character = GetComponent&lt;CharacterController&gt;();
+     //tr = transform;
+// }
+ 
+ //void Update ()
+ // {    // find the vector enemy -> player
+    // Vector3 chaseDir = _Player.position - tr.position;
+     // chaseDir.y = 0; // let only the horizontal direction
+     // float distance = chaseDir.magnitude;  // get the distance
+    // if (distance <= 2)
+        // Debug.Log("Attacking Player");
+     // else
+    // {    // find the player direction
+        // Quaternion rot = Quaternion.LookRotation(chaseDir);
+         // rotate to his direction
+        // tr.rotation = Quaternion.Slerp(tr.rotation, rot, Time.deltaTime * 4);
+        // if (character.isGrounded){ // if is grounded...
+            // vSpeed = 0;  // vertical speed  is zero
+             // if (jump){    // if should jump...
+               //  vSpeed = jumpSpeed; // aplly jump speed
+                //  jump = false; // only jump once!
+           //  }
+        // } 
+         // else // but if lost ground, check if it's an abyss
+         // if (!Physics.Raycast(tr.position, -tr.up, 20f)){ // if no ground below
+            // vSpeed = jetPackSpeed;  // use jetpack
+        // }
+         // vSpeed -= gravity * Time.deltaTime; // apply gravity
+         // calculate horizontal velocity vector
+        // chaseDir = chaseDir.normalized * speed;
+         // chaseDir.y += vSpeed; // include vertical speed
+         // and move the enemy
+     //    //character.Move(chaseDir * Time.deltaTime);
+    // }
+// }
+ 
+ // if collided with some wall or block, jump
+// void OnControllerColliderHit(ControllerColliderHit hit){
+     // only check lateral collisions
+     //if (Mathf.Abs(hit.normal.y) < 0.5){
+        // jump = true; // jump if collided laterally
+    // }
+ // },
+ // end of test
+
+  loseHealth: function(damage) {
+
+    this.health = this.health - damage;
+
+  },
+
 	update: function(delta){
+    if(this.health <= 0){
+       console.log(this.health);
+       if(this.health <= 0) {
+          me.game.world.removeChild(this);
+       }
+    }
     this.now = new Date().getTime();
     this.body.vel.x -= this.body.accel.x * me.timer.tick;
 
@@ -259,6 +360,37 @@ game.EnemyCreep = me.Entity.extend({
     this.body.update(delta);
  
     this._super(me.Entity, "update", [delta]);
+
+   // if (jump == true)
+   //{
+//
+        //Playerypos -=  vel;
+        //Playerxpos +=  vel;
+    // }
+
+   // public void jump() {
+   // if(gameTime.getTimeMS() - jumpTime > jumpDelayInMilliseconds) {
+      // jumpTime = gameTime.getTimeMS();
+      // character.jump();
+   // }
+/// this is a test
+  // if(Jump == true){
+
+       //  if(JumpFall == false){
+           // shiftY -= 1;
+       //  }
+        // if(shiftY == PUT_YOUR_JUMP_HEIGHT_HERE){
+          //  JumpFall = true;
+      //  }
+       //  if(JumpFall == true){
+            // shiftY += 1;
+       //  }
+      //  if(shiftY >=PUT_YOUR_STARTING_HEIGHT_HERE){
+            // Jump = false;
+            // JumpFall = false;
+      //  }
+   // }  
+    ///// test is above
     
     return true;
 	},
