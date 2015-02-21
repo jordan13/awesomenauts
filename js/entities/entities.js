@@ -511,3 +511,9 @@ game.GameManager = Object.extend ({
 // now we can just adjust everything in the game.js file
 // we are making an if else statement in the game manager to see if the player is dead 
 // we are using the reset player function
+// renderable fuctions draw instead of update
+//renderer is the parameter of the draw function
+//we put the coordinates of where we are in the draw function
+//we need the event handler to be listening for someone to press the enter button
+//without an event handler we cannot check any other way
+//we also need to make sure we unbind the key also
