@@ -34,9 +34,6 @@
 
         if(this.health <= 0){
           this.dead = true;
-          this.pos.x = 10;
-          this.pos.y = 0;
-          this.heath = game.data.playerHealth;
         }
    		 	
         if(me.input.isKeyPressed ("right")){
@@ -104,10 +101,10 @@
  	    	     }
  	    		else if(xdif>-35 && this.facing=== 'right' && (xdif<0) && ydif>-50){
  	    			this.body.vel.x = 0;
- 	    			this.pos.x = this.pos.x -1;
+ 	    			// this.pos.x = this.pos.x -1;
  	    		}else if(xdif<70 && this.facing==='left' && xdif>0) {
  	    			this.body.vel.x = 0;
- 	    			this.pos.x = this.pos.x +1;
+ 	    			// this.pos.x = this.pos.x +1;
  	    	   }
 
  	    	    if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= game.data.plaerAttackTimer){
@@ -120,12 +117,12 @@
           var ydif = this.pos.y - response.b.pos.y;
 
           if (xdif>0) {
-              this.pos.x = this.pos.x + 1;
+             // this.pos.x = this.pos.x + 1;
               if(this.facing==="left"){
                 this.body.vel.x = 0;
               }
           }else{
-            this.pos.x = this.pos.x - 1;
+            // this.pos.x = this.pos.x - 1;
              if(this.facing==="right"){
                 this.body.vel.x = 0;
               }
@@ -416,7 +413,7 @@ game.EnemyCreep = me.Entity.extend({
       this.pos.x = this.pos.x + 1;
         if((this.now-this.lastHit >= 1000)){
           this.lastHit = this.now;
-          response.b.loseHealth(game.data.enemy.enemy.CreepAttack);
+          response.b.loseHealth(game.data.enemyCreepAttack);
         }
 
     }else if (response.b.type=== 'PlayerEntity') {
@@ -432,7 +429,7 @@ game.EnemyCreep = me.Entity.extend({
         }
         if((this.now-this.lastHit >= 1000) && xdif>0){
           this.lastHit = this.now;
-          response.b.loseHealth(game.data.enemy.CreepAttack);
+          response.b.loseHealth(game.data.enemyCreepAttack);
         }
 
     }
@@ -451,6 +448,12 @@ game.GameManager = Object.extend ({
     
     update: function(){ 
      	this.now = new Date().getTime();
+
+      if(game.data.player.dead) {
+          me.game.world.removeChild(game.data.player);
+          me.state.current().resetPlayer(10, 0);
+
+      }
 
 
      	if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastCreep >= 1000)){
@@ -504,3 +507,5 @@ game.GameManager = Object.extend ({
 //  what we want our if else statement in our player function to do is to hurt the creep only when we are attacking
 // we are working on the ways we can attack the creeps
 // | | this represents and
+// If we make the number smaller in Playerattack timer, the player can attack faster and if we make the number bigger the player can attack slower
+// now we can just adjust everything in the game.js file
