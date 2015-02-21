@@ -509,3 +509,5 @@ game.GameManager = Object.extend ({
 // | | this represents and
 // If we make the number smaller in Playerattack timer, the player can attack faster and if we make the number bigger the player can attack slower
 // now we can just adjust everything in the game.js file
+// we are making an if else statement in the game manager to see if the player is dead 
+// we are using the reset player function
