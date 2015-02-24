@@ -50,11 +50,13 @@
               this.body.vel.x = 0;
  	      }
            
- 	      if(me.input.isKeyPressed("jump") && !this.body.jumping  && !this.body.falling){
- 	      		this.body.jumping = true;
- 	      		this.body.vel.y -= this.body.accel.y * me.timer.tick;
+ 	      if(me.input.isKeyPressed("jump")){
+if(!this.body.jumping  && !this.body.falling){
+            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+             this.body.jumping = true;
 
- 	      }
+        }
+        }  
 
 
  	        if(me.input.isKeyPressed("attack")){
@@ -411,15 +413,18 @@ game.EnemyCreep = me.Entity.extend({
   collideHandler: function(response) {
     if(response.b.type === 'PlayerBase') {
       this.attacking=true;
-         if(me.input.isKeyPressed("jump") && !this.body.jumping  && !this.body.falling){
-            this.body.jumping = true;
-            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+  
+
+   if(!this.body.jumping  && !this.body.falling){
+            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+                        this.body.jumping = true;
         }
 
       this.lastAttacking=this.now;
       this.body.vel.x = 0;
       this.pos.x = this.pos.x + 1;
-        if((this.now-this.lastHit >= 1000)){
+        
+      if((this.now-this.lastHit >= 1000)){
           this.lastHit = this.now;
           response.b.loseHealth(game.data.enemyCreepAttack);
         }
@@ -456,6 +461,7 @@ game.GameManager = Object.extend ({
     
     update: function(){ 
      	this.now = new Date().getTime();
+
 
       if(game.data.player.dead) {
           me.game.world.removeChild(game.data.player);
@@ -529,3 +535,6 @@ game.GameManager = Object.extend ({
 //we need the event handler to be listening for someone to press the enter button
 //without an event handler we cannot check any other way
 //we also need to make sure we unbind the key also
+// gold will be aquired each game and can be used to buy, power ups
+// we have other variables to keep track of how the experience is spent
+// we are using local variables to make sure we are keeping track of things such as the experience on the fly
