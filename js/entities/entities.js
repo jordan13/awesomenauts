@@ -17,6 +17,7 @@
     	this.facing = "right";
     	this.now = new Date().getTime();
       this.dead = false;
+      this.attack = game.data.playerAttack;
     	this.lastHit = this.now;
     	this.lastAttack = new Date().getTime();
 
@@ -58,7 +59,6 @@
 
  	        if(me.input.isKeyPressed("attack")){
  	      	  if(!this.renderable.isCurrentAnimation("attack")){
- 	      	    console.log(!this.renderable.isCurrentAnimation("attack"));
  	      		// sets the current animation to attack and once it is over, goes back to idle animation
  	      		this.renderable.setCurrentAnimation("attack", "idle");
  	      		// the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
@@ -87,7 +87,6 @@
 
       loseHealth: function(damage){
         this.health = this.health - damage;
-        console.log(this.health);
       },
 
  	    collideHandler: function(response){
@@ -107,8 +106,7 @@
  	    			// this.pos.x = this.pos.x +1;
  	    	   }
 
- 	    	    if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= game.data.plaerAttackTimer){
- 	    			console.log("tower Hit");
+ 	    	    if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= game.data.playerAttackTimer){
  	    			this.lastHit = this.now;
  	    			response.b.loseHealth(game.data.playerAttack);
  	    	}
@@ -132,7 +130,15 @@
               (((xdif>0) && this.facing==="left") || ((xdif<0) && this.facing==="right")))
           {
             this.lastHit = this.now;
-            response.b.loseHealth(game.data.PlayerAttack);
+            // if the creeps health is less then our attack excecute code in if statement
+            if(response.b.health <= game.data.playerAttack) {
+              // adds one gold for a creep kill
+                game.data.gold += 1;
+                console.log("Current gold: " + game.data.gold);
+            }
+
+
+            response.b.loseHealth(game.data.playerAttack);
           }
       }
  	 }
@@ -352,10 +358,7 @@ game.EnemyCreep = me.Entity.extend({
 
 	update: function(delta){
     if(this.health <= 0){
-       console.log(this.health);
-       if(this.health <= 0) {
-          me.game.world.removeChild(this);
-       }
+       me.game.world.removeChild(this);
     }
     this.now = new Date().getTime();
     this.body.vel.x -= this.body.accel.x * me.timer.tick;
@@ -408,6 +411,11 @@ game.EnemyCreep = me.Entity.extend({
   collideHandler: function(response) {
     if(response.b.type === 'PlayerBase') {
       this.attacking=true;
+         if(me.input.isKeyPressed("jump") && !this.body.jumping  && !this.body.falling){
+            this.body.jumping = true;
+            this.body.vel.y -= this.body.accel.y * me.timer.tick;
+        }
+
       this.lastAttacking=this.now;
       this.body.vel.x = 0;
       this.pos.x = this.pos.x + 1;
@@ -441,7 +449,7 @@ game.GameManager = Object.extend ({
 	init: function(x, y, settings){
 		this.now = new Date().getTime();
 		this.lastCreep = new Date(). getTime();
-
+    this.paused = false;
 		this.alwaysUpdate = true;
 			
 	},
@@ -455,6 +463,10 @@ game.GameManager = Object.extend ({
 
       }
 
+      if(Math.round(this.now/1000)%20 ===0 && (this.now - this.lastCreep >= 1000)){
+        game.data.gold += 1;
+        console.log("Current gold: " + game.data.gold) ;
+      }
 
      	if(Math.round(this.now/1000)%10 ===0 && (this.now - this.lastCreep >= 1000)){
      		this.lastCreep = this.now;
