@@ -150,9 +150,11 @@ game.EnemyCreep = me.Entity.extend({
   
 
    if(!this.body.jumping  && !this.body.falling){
-            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+          this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
                         this.body.jumping = true;
         }
+      
+
 
       this.lastAttacking=this.now;
       this.body.vel.x = 0;
