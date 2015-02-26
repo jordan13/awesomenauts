@@ -134,7 +134,7 @@
            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
             this.body.jumping = true;
         },
-        
+
       loseHealth: function(damage){
         this.health = this.health - damage;
       },
@@ -273,3 +273,5 @@
 // attributes is for anything different involving leveling up, move speed, health percentage, defense, and more
 // flags are things that are either one way or another
 // we sorted everything into their own group so everything is more neater
+// check if dead is the first function we are building
+//attack is a very hard function to classify because there is multiple things that it is related to such as an animation 
