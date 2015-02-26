@@ -56,30 +56,10 @@
  	    update: function(delta){
  	    	this.now = new Date().getTime();
 
-        if(this.health <= 0){
-          this.dead = true;
-        }
-   		 	
-        if(me.input.isKeyPressed ("right")){
- 	         	// sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
- 	        	this.body.vel.x += this.body.accel.x * me.timer.tick;
- 	        	this.facing = "right";
- 	        	this.flipX(true);
- 	        } else if(me.input.isKeyPressed("left")){
- 	        	this.facing.left = "left";
- 	        	this.body.vel.x -= this.body.accel.x * me.timer.tick;
- 	        	this.flipX(false);
- 	        }else{ 
-              this.body.vel.x = 0;
- 	      }
-           
- 	      if(me.input.isKeyPressed("jump")){
-          if(!this.body.jumping  && !this.body.falling){
-            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
-             this.body.jumping = true;
+        this.dead = checkIfDead();
 
-        }
-        }  
+        this.checkKeyPressesAndMove();
+
 
 
  	        if(me.input.isKeyPressed("attack")){
@@ -109,7 +89,52 @@
  	       this._super(me.Entity, "update", [delta]);
  	       return true;
  	    },
+        checkIfDead: function(){
+          if(this.health <= 0){
+            return true;
+          }
+            return false;
+        },
 
+        checkKeyPressedAndMove: function(){
+
+         if(me.input.isKeyPressed ("right")){
+           this.moveRight();
+          } else if(me.input.isKeyPressed("left")){
+              this.moveLeft();
+          }else{ 
+              this.body.vel.x = 0;
+        }
+           
+        if(me.input.isKeyPressed("jump")){
+          if(!this.body.jumping  && !this.body.falling){
+            this.jump();
+
+        }
+        }    
+
+     },
+
+        moveRight: function(){
+           // sets position of my x by adding the velocity defined above in setvelocity() and multiplying it by me.timer.tick
+            this.body.vel.x += this.body.accel.x * me.timer.tick;
+            this.facing = "right";
+            this.flipX(true);
+        },
+
+        moveLeft: function(){
+            
+            this.facing.left = "left";
+            this.body.vel.x -= this.body.accel.x * me.timer.tick;
+            this.flipX(false);
+
+          },
+
+        jump: function(){
+           this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
+            this.body.jumping = true;
+        },
+        
       loseHealth: function(damage){
         this.health = this.health - damage;
       },
