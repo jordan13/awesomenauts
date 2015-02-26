@@ -242,8 +242,9 @@
 // gold will be aquired each game and can be used to buy, power ups
 // we have other variables to keep track of how the experience is spent
 // we are using local variables to make sure we are keeping track of things such as the experience on the fly
-
-
 //In video 29 we are basically editing our code and making it shorter
 // When the code is trimmed down the way it was, we can manage all of the code more easily  
 // we split most of our functions into seperate java script files 
+// attributes is for anything different involving leveling up, move speed, health percentage, defense, and more
+// flags are things that are either one way or another
+// we sorted everything into their own group so everything is more neater
