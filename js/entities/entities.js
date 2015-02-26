@@ -1,34 +1,57 @@
  game.PlayerEntity = me.Entity.extend({
  	init: function(x, y, settings) {
-    	this._super(me.Entity, 'init', [x, y, {
-    		image: "player",
-    	  	width: 64,
-    	  	height: 64,
-    	  	spritewidth: "64",
-    	  	spriteheight: "64",
-    	  	
-    	  	getShape: function() {
-    	  		return(new me.Rect(0, 0, 64, 64)).toPolygon();
-    	  	}
-		}]);
+    	this.setSuper();
+      this.setPlayerTimers();
+      this.setAttributes ();
       this.type = "PlayerEntity";
-      this.health = game.data.playerHealth;
-    	this.body.setVelocity(game.data.playerMoveSpeed, 20);
-    	this.facing = "right";
-    	this.now = new Date().getTime();
-      this.dead = false;
-      this.attack = game.data.playerAttack;
-    	this.lastHit = this.now;
-    	this.lastAttack = new Date().getTime();
+      this.setFlags();
+    
+    	me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
+    	
+      this.addAnimation();
+    	
+      this.renderable.setCurrentAnimation("idle");
 
-    	this.renderable.addAnimation("idle", [78]);
-    	this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
+	},
+      // this is what sets the super class
+      setSuper: function(){
+        this._super(me.Entity, 'init', [x, y, {
+        image: "player",
+        width: 64,
+        height: 64,
+        spritewidth: "64",
+        spriteheight: "64",
+          
+        getShape: function() {
+         return(new me.Rect(0, 0, 64, 64)).toPolygon();
+          }
+    }]);
+
+      },
+
+      setPlayerTimers: function(){
+      this.now = new Date().getTime();
+      this.lastHit = this.now;
+      this.lastAttack = new Date().getTime();
+      
+      },
+
+      setAttributes: function(){
+        this.health = game.data.playerHealth;
+        this.body.setVelocity(game.data.playerMoveSpeed, 20);
+        this.attack = game.data.playerAttack;
+      },
+
+      setFlags: function(){     
+        this.facing = "right";
+        this.dead = false;
+      },
+
+      addAnimation: function(){
+        this.renderable.addAnimation("idle", [78]);
+        this.renderable.addAnimation("walk", [117, 118, 119, 120, 121, 122, 123, 124, 125], 80);
         this.renderable.addAnimation("attack", [65, 66, 67, 68, 69, 70, 71, 72], 80);
-    	this.renderable.setCurrentAnimation("idle");
-
-
-        me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
- 	},
+      },
 
  	    update: function(delta){
  	    	this.now = new Date().getTime();
