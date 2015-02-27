@@ -45,6 +45,7 @@
       setFlags: function(){     
         this.facing = "right";
         this.dead = false;
+        this.attacking = false;
       },
 
       addAnimation: function(){
@@ -60,28 +61,7 @@
 
         this.checkKeyPressesAndMove();
 
-
-
- 	        if(me.input.isKeyPressed("attack")){
- 	      	  if(!this.renderable.isCurrentAnimation("attack")){
- 	      		// sets the current animation to attack and once it is over, goes back to idle animation
- 	      		this.renderable.setCurrentAnimation("attack", "idle");
- 	      		// the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
- 	      		this.renderable.setAnimationFrame();
- 	      }
-
- 	    }
-
-          else if(this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")){
-             if(!this.renderable.isCurrentAnimation("walk")){
-          	   this.renderable.setCurrentAnimation("walk");
-       
-            }
-         
-          }else if (!this.renderable.isCurrentAnimation("attack")){
-             this.renderable.setCurrentAnimation("idle");
-
-          }
+ 	      this.setAnimation();
 
  	       me.collision.check(this, true, this.collideHandler.bind(this), true);
  	       this.body.update(delta);
@@ -111,7 +91,8 @@
             this.jump();
 
         }
-        }    
+        }  
+         this.attacking = me.input.isKeyPressed("attack");
 
      },
 
