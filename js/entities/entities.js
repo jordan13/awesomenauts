@@ -115,6 +115,28 @@
            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
             this.body.jumping = true;
         },
+        setAnimation: function(){
+                 if(this.attacking){
+            if(!this.renderable.isCurrentAnimation("attack")){
+            // sets the current animation to attack and once it is over, goes back to idle animation
+            this.renderable.setCurrentAnimation("attack", "idle");
+            // the line of code below makes it so that, this sequence, we begin from the first animation, not wherever we left off when we switched 
+            this.renderable.setAnimationFrame();
+         }
+
+       }
+
+          else if(this.body.vel.x !== 0 && !this.renderable.isCurrentAnimation("attack")){
+             if(!this.renderable.isCurrentAnimation("walk")){
+               this.renderable.setCurrentAnimation("walk");
+       
+            }
+         
+          }else if (!this.renderable.isCurrentAnimation("attack")){
+             this.renderable.setCurrentAnimation("idle");
+
+          }
+        },        
 
       loseHealth: function(damage){
         this.health = this.health - damage;
@@ -256,3 +278,6 @@
 // we sorted everything into their own group so everything is more neater
 // check if dead is the first function we are building
 //attack is a very hard function to classify because there is multiple things that it is related to such as an animation 
+// in video 32 what we did was we completed refactoring the rest of our code
+//we created a new class for attacking called setAnimation
+//right now we are just triming our code so we can keep track of it better
