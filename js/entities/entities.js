@@ -308,3 +308,8 @@
 // in video 32 what we did was we completed refactoring the rest of our code
 //we created a new class for attacking called setAnimation
 //right now we are just triming our code so we can keep track of it better
+//comments from video 33
+//0 and 1 are good parameters
+// 2 is a sketchy parameter
+//we minimized our main functions that are being used to control the player
+// lengthening down our code is better for us when we are trying to check for any errors
