@@ -48,3 +48,9 @@ game.HeroDeathManager = Object.extend({
   }
 
 });
+
+// The game manager removes the player if he's  dead and sets him back
+
+// we have refactored the game manager as much as possible
+
+// There are some other things that we can also refactor
