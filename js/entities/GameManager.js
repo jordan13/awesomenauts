@@ -105,3 +105,9 @@ game.GameTimerManager = Object.extend ({
 
 // we need to apply this.gameOver to something that will call the game over clean
 
+//we reduced lines of code that were repetitive 
+
+// A bollean means either true or false and it is a variable type
+
+// we are automatically calling the game over function with 2 intenitions
+
