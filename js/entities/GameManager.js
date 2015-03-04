@@ -56,6 +56,7 @@ game.GameTimerManager = Object.extend ({
     game.ExperienceManager = Object.extend({
       init: function(x, y, settings){
         this.alwaysUpdate = true;
+        this.gameOver = false;
 
       },
 
