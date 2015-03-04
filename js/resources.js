@@ -25,6 +25,7 @@ game.resources = [
      // we use this one because it is under the tmx and that is what we used
 
 	/* Background music. 
+
 	 * @example
 	 * {name: "example_bgm", type: "audio", src: "data/bgm/"},
 	 */	
