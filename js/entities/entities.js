@@ -12,6 +12,7 @@
     	
       this.renderable.setCurrentAnimation("idle");
 
+
 	},
       // this is what sets the super class
       setSuper: function(x, y){

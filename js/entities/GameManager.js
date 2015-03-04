@@ -66,6 +66,7 @@ game.GameTimerManager = Object.extend ({
 
           }
 
+          console.log(gmae.data.exp);
          
           return true;
 
