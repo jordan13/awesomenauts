@@ -36,6 +36,7 @@ game.GameTimerManager = Object.extend ({
     game.HeroDeathManager = Object.extend({
       init: function(x, y, settings){
       this.alwaysUpdate = true;
+      this.gameOver = false;
 
     },
 
@@ -59,10 +60,12 @@ game.GameTimerManager = Object.extend ({
       },
 
         update: function () {
-          if(game.data.win === true){
+          if(game.data.win === true && !this.gameOver){
               game.data.exp += 10;
-          }else if(game.data.win === false) {
+              this.gameOver = true;
+          }else if(game.data.win === false && !this.gameOver) {
               game.data.exp += 1;
+              this.gameOver = true;
 
           }
 
