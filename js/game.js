@@ -16,7 +16,8 @@ var game = {
 		enemycreepAttackTimer: 1000,
 		playerMoveSpeed: 5,
 		creepMoveSpeed: 5,
-		gameManager: "",
+		gameTimerManager: "",
+		gameHeroDeathManager: "",
 		player: "",
 		exp: 0,
 		gold: 0,
@@ -24,6 +25,8 @@ var game = {
 		exp2: 0,
 		exp3: 0,
 		exp4: 0,
+		win: ""
+
 
 	},
 	
@@ -64,6 +67,8 @@ var game = {
 		me.pool.register("EnemyCreep", game.EnemyCreep, true);
 		me.pool.register("GameTimerManager", game.GameTimerManager);
 		me.pool.register("HeroDeathManager", game.HeroDeathManager);
+	    me.pool.register("ExperienceManager", game.ExperienceManager);
+
 		// this is adding our player to the pool of objects we can use
         // we are connecting our player to the player entity class we just built.
         // true allows you to make multiple instances of that object
