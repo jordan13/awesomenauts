@@ -6,10 +6,10 @@ var game = {
 	data : {
 		// score
 		score : 0, 
-		enemyBaseHealth: 10,
-		playerBaseHealth: 10,
+		enemyBaseHealth: 1,
+		playerBaseHealth: 1,
 		enemyCreepHealth: 10,
-		playerHealth: 10,
+		playerHealth: 12,
 		enemyCreepAttack: 1,
 		playerAttack: 1,
 		playerAttackTimer: 1000,
@@ -47,6 +47,9 @@ var game = {
 		}
 
 		me.save.add({exp: 0, exp1: 0, exp2: 0, exp3: 0, exp4: 0});
+
+		console.log(game.data.exp);
+		console.log(game.data.exp2);
 
 		// Initialize the audio.
 		me.audio.init("mp3.episode");

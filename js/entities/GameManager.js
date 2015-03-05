@@ -79,6 +79,8 @@ game.GameTimerManager = Object.extend ({
         }
          this.gameOver = true;
          me.save.exp = game.data.exp;
+         // for testing purposes
+         me.save.exp2 = 4;
       }
 
 
