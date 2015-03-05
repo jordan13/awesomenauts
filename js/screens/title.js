@@ -78,3 +78,7 @@ game.TitleScreen = me.ScreenObject.extend({
 
 //we use save.remove becuase we do not want any more save variables 
 
+// video 40
+
+// In continue we dont want to remove any experience we just want to change it state
+
