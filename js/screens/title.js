@@ -49,3 +49,9 @@ game.TitleScreen = me.ScreenObject.extend({
 // titlejs is where we will have all the code for the start screen
 //we want our screen to start at the top left corner
 //the -10 sets the screen way in the back
+//Pointer down is just waiting for the mouse to be clicked down
+
+//True tells you to use the screen coordinates
+
+//we use save.remove becuase we do not want any more save variables 
+
