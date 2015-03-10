@@ -33,3 +33,14 @@ game.SpendExp = me.ScreenObject.extend({
 		
 	}
 });
+// All that MENU represents is the number 1
+
+// PLAY represents 3
+
+// READY represents 2
+
+// GAMEOVER represents 4
+
+// For the sepnd screen we are going to have 4 variables that we are working with it
+
+//we need to make sure to change our game. function
