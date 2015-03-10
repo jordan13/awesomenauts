@@ -57,7 +57,7 @@ game.TitleScreen = me.ScreenObject.extend({
 
 
 				me.input.releasePointerEvent('pointerdown', this);
-		        me.state.change(me.state.PLAY);
+		        me.state.change(me.state.SPENDEXP);
 
 			}
 
