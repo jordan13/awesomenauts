@@ -51,3 +51,7 @@ game.SpendExp = me.ScreenObject.extend({
 // For the sepnd screen we are going to have 4 variables that we are working with it
 
 //we need to make sure to change our game. function
+
+// we need to set up an experience screen wher people can see how much exp they have 
+
+// we will also have options for the users to buy power ups to use in the game

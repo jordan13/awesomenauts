@@ -50,9 +50,6 @@ var game = {
 
 		me.state.SPENDEXP = 112;
 
-		console.log(game.data.exp);
-		console.log(game.data.exp2);
-
 		// Initialize the audio.
 		me.audio.init("mp3.episode");
 
