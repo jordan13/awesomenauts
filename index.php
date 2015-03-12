@@ -36,7 +36,7 @@
 
 		<script type="text/javascript" src="js/screens/title.js"></script>
 		<script type="text/javascript" src="js/screens/play.js"></script>
-	    <script type="text/javascript" src="js/screens/SpendExp.js"></script>
+	    <script type="text/javascript" src="js/screens/spendExp.js"></script>
 
 
 		<!-- /build -->

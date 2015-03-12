@@ -9,15 +9,15 @@ game.GameTimerManager = Object.extend ({
     
     update: function(){ 
      	this.now = new Date().getTime()
-      this.goldTimerCheck(this);
+      this.goldTimerCheck();
       this.creepTimerCheck();
 
      	return true;
     },
       goldTimerCheck: function(){
-        if(Math.round(this.now/1000)%20 ===0 && (this.now - this.lastCreep >= 1000)){
+        if(Math.round(this.now/1000)%20 === 0 && (this.now - this.lastCreep >= 1000)){
            game.data.gold += 1;
-           console.log("Current gold: " + game.data.gold) ;
+           console.log("Current gold: " + game.data.gold);
       }
 
       },
@@ -80,7 +80,7 @@ game.GameTimerManager = Object.extend ({
          this.gameOver = true;
          me.save.exp = game.data.exp;
          // for testing purposes
-         me.save.exp2 = 4;
+         // me.save.exp2 = 4;
       }
 
 
