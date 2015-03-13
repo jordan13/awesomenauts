@@ -130,3 +130,9 @@ game.GameTimerManager = Object.extend ({
 //what we basically did was we set the values up for when a user purchases a power up and we set up the cost of the experience
 
 // the user can now use the experience he/she has and buy powerups so far we only have 1 power up that is available to be purchased
+
+//Basically what we did in video 46 was we set up the spendGold function
+
+// we also added a picture of it in the title screen
+
+// we linked everything together that had to do with the spendGold funciton
