@@ -82,3 +82,9 @@ game.SpendExp = me.ScreenObject.extend({
 // we need to set up an experience screen wher people can see how much exp they have 
 
 // we will also have options for the users to buy power ups to use in the game
+// we are adding the price's of the powerups the user can buy
+
+// we put this.handler because once we move on to the next stage from the unbind keys 
+
+// In Video 44 waht we basically did was set up the structure for video 45 so we can continue setting the functions in the continue screen
+
