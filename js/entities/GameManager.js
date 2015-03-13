@@ -171,3 +171,12 @@ game.GameTimerManager = Object.extend ({
 // we also added a picture of it in the title screen
 
 // we linked everything together that had to do with the spendGold funciton
+
+
+//When the user presses the buy button we want to pause the game
+
+//we are setting up the function to where the buy key is pressed
+
+// resume is what we use as the pause function in stopBuying
+
+//the opacity is adjustable to the user can still get a glimpse of what is going on in the game at the current time
