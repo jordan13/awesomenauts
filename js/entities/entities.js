@@ -159,7 +159,7 @@
             this.body.falling = false;
             this.body.vel.y = -1;
              }
-          else if(xdif>-35 && this.facing=== 'right' && (xdif<0) && ydif>-50){
+          else if(xdif>-35 && this.facing==='right' && (xdif<0) && ydif>-50){
             this.body.vel.x = 0;
 
           }else if(xdif<70 && this.facing==='left' && xdif>0) {
