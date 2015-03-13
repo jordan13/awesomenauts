@@ -11,6 +11,7 @@ game.resources = [
      {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
      {name: "title-screen", type:"image", src: "data/img/title.png"},
      {name: "exp-screen", type:"image", src: "data/img/loadPic.png"},
+     {name: "gold-screen", type:"image", src: "data/img/spend.png"},
       // this line above, is where we are loading the image or "player" that we are using
 
 	/* Atlases 
