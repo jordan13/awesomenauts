@@ -113,3 +113,6 @@ game.GameTimerManager = Object.extend ({
 
 // we are automatically calling the game over function with 2 intenitions
 
+//what we basically did was we set the values up for when a user purchases a power up and we set up the cost of the experience
+
+// the user can now use the experience he/she has and buy powerups so far we only have 1 power up that is available to be purchased
