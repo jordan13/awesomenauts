@@ -56,31 +56,30 @@ game.GameTimerManager = Object.extend ({
     game.ExperienceManager = Object.extend({
       init: function(x, y, settings){
         this.alwaysUpdate = true;
-        this.gameOver = false;
+        this.gameover = false;
 
       },
 
         update: function () {
-          if(game.data.win === true && !this.gameOver){
+          if(game.data.win === true && !this.gameover){
             this.gameOver(true);
-          }else if(game.data.win === false && !this.gameOver) {
+          }else if(game.data.win === false && !this.gameover) {
            this.gameOver(false);
           }
          
+
           return true;
 
       },
 
-      gameOver: function (win){
+      gameOver: function (win){ 
         if(win) {
           game.data.exp += 10; 
         }else{
           game.data.exp += 1;
         }
-         this.gameOver = true;
+         this.gameover = true;
          me.save.exp = game.data.exp;
-         // for testing purposes
-         // me.save.exp2 = 4;
       }
 
 
@@ -122,6 +121,36 @@ game.GameTimerManager = Object.extend ({
         game.data.buyscreen.setOpacity(0.8);
         me.game.world.addChild(game.data.buyscreen, 34);
         game.data.player.body.setVelocity(0, 0);
+        me.state.pause(me.state.PLAY);
+        me.input.bindKey(me.input.KEY.F1, "F1", true);
+        me.input.bindKey(me.input.KEY.F2, "F2", true);
+        me.input.bindKey(me.input.KEY.F3, "F3", true);
+        me.input.bindKey(me.input.KEY.F4, "F4", true);
+        me.input.bindKey(me.input.KEY.F5, "F5", true);
+        me.input.bindKey(me.input.KEY.F6, "F6", true);
+        this.setBuyText();
+
+
+      },
+
+      setBuyText: function(){
+      
+      me.game.world.addChild(new (me.Renderable.extend({
+        init: function(){
+        this._super(me.Renderable, 'init', [10, 10, 300, 50]);
+        this.font = new me.Font("Tahoma", 30, "red");
+        // me.input.registerPointerEvent('pointerdown', this, this.newGame.bind(this), true);
+
+      },
+
+      draw:  function(renderer){
+        this.font.draw(renderer.getContext(), "PRESS F1-F4 TO BUY, F5 TO SKIP", this.pos.x, this.pos.y);
+        
+        }
+    
+
+        })));
+
       },
 
       stopBuying: function(){
@@ -129,12 +158,19 @@ game.GameTimerManager = Object.extend ({
         me.state.resume(me.state.PLAY);
         game.data.player.body.setVelocity(game.data.playerMoveSpeed, 20);
         me.game.world.removeChild(game.data.buyscreen);
+        me.input.unbindKey(me.input.KEY.F1, "F1", true);
+        me.input.unbindKey(me.input.KEY.F2, "F2", true);
+        me.input.unbindKey(me.input.KEY.F3, "F3", true);
+        me.input.unbindKey(me.input.KEY.F4, "F4", true);
+        me.input.unbindKey(me.input.KEY.F5, "F5", true);
+        me.input.unbindKey(me.input.KEY.F6, "F6", true);
+
 
      }
 
 
       });
-
+   
 
 
 

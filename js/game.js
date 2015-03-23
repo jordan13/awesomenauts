@@ -7,7 +7,7 @@ var game = {
 		// score
 		score : 0, 
 		enemyBaseHealth: 1,
-		playerBaseHealth: 5,
+		playerBaseHealth: 1,
 		enemyCreepHealth: 10,
 		playerHealth: 15,
 		enemyCreepAttack: 1,
@@ -50,10 +50,11 @@ var game = {
 
 		me.save.add({exp: 0, exp1: 0, exp2: 0, exp3: 0, exp4: 0});
 
+
 		me.state.SPENDEXP = 112;
 
 		// Initialize the audio.
-		me.audio.init("mp3.episode");
+		me.audio.init("mp3.episode,ogg");
 
 		// Set a callback to run when loading is complete.
 		me.loader.onload = this.loaded.bind(this);
