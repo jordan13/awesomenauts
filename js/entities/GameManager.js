@@ -135,23 +135,25 @@ game.GameTimerManager = Object.extend ({
 
       setBuyText: function(){
       
-      me.game.world.addChild(new (me.Renderable.extend({
-        init: function(){
-        this._super(me.Renderable, 'init', [10, 10, 300, 50]);
-        this.font = new me.Font("Tahoma", 30, "red");
-        // me.input.registerPointerEvent('pointerdown', this, this.newGame.bind(this), true);
+       game.data.buytext = new (me.Renderable.extend({
+          init: function(){
+             this._super(me.Renderable, 'init', [game.data.pausePos.x, game.data.pausePos.y, 5, 5]);
+             this.font = new me.Font("Tahoma", 30, "red");
+             this.updateWhenPaused = true;
+             this.alwaysUpdate = true;
+              // me.input.registerPointerEvent('pointerdown', this, this.newGame.bind(this), true);
 
       },
 
       draw:  function(renderer){
-        this.font.draw(renderer.getContext(), "PRESS F1-F4 TO BUY, F5 TO SKIP", this.pos.x, this.pos.y);
+        this.font.draw(renderer.getContext(), "PRESS F1-F6 TO BUY, B TO EXIT", this.pos.x, this.pos.y);
         
         }
     
 
-        })));
-
-      },
+        }));
+      me.game.world.addChild();
+   },
 
       stopBuying: function(){
         this.buying = false;
@@ -164,6 +166,7 @@ game.GameTimerManager = Object.extend ({
         me.input.unbindKey(me.input.KEY.F4, "F4", true);
         me.input.unbindKey(me.input.KEY.F5, "F5", true);
         me.input.unbindKey(me.input.KEY.F6, "F6", true);
+        me.game.world.removeChild(game.data.buytext);
 
 
      }

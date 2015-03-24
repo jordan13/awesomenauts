@@ -144,9 +144,9 @@
       },
 
  	    collideHandler: function(response){
- 	    	if(response.b.type==='EnemyBaseEntity'){
+ 	    	if(response.b.type === 'EnemyBaseEntity'){
  	          this.collideWithEnemyBase(response);
- 	    }else if(response.b.type==='EnemyCreep') {
+ 	    }else if(response.b.type === 'EnemyCreep') {
             this.collideWithEnemyCreep(response);
       }
  	 },
