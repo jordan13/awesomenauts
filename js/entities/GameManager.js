@@ -219,3 +219,12 @@ game.GameTimerManager = Object.extend ({
 // resume is what we use as the pause function in stopBuying
 
 //the opacity is adjustable to the user can still get a glimpse of what is going on in the game at the current time
+
+// The reson why we unbind the key is so people can not randomly make purchases
+
+// this.updateWhenPaused will only work if it is after this.font
+
+// we had to add a z value for our "B" button to wrk
+
+// we had to add the z value for the text to show up
+
