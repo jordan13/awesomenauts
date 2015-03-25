@@ -235,3 +235,8 @@ game.GameTimerManager = Object.extend ({
 
 // we had to add the z value for the text to show up
 
+// we are adding new upgrades to be able o be purchased for upgrading your player
+
+// We are setting up the names and buttons of these upgrades
+
+// we also added the cost and the current level for each of these upgrades or powerups
