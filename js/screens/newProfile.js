@@ -40,3 +40,17 @@ game.NewProfile = me.ScreenObject.extend({
 
 	}
 });
+
+// so far we have set up 2 new screens
+
+// in newProfile.js you have to unbind all of the keys
+
+// we no longer need any me.save.exp's
+
+// we refactored our code from the gamemanager
+
+// we split everything and set it up to have their own function
+
+// the newProfile screen now pops up when you click start a new game
+
+// the loadProfile screen now pops up when you click "CONTINUE"
