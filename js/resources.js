@@ -10,8 +10,10 @@ game.resources = [
      {name: "tower", type:"image", src: "data/img/tower_round.svg.png"},
      {name: "creep1", type:"image", src: "data/img/brainmonster.png"},
      {name: "title-screen", type:"image", src: "data/img/title.png"},
-     {name: "exp-screen", type:"image", src: "data/img/loadPic.png"},
+     {name: "exp-screen", type:"image", src: "data/img/loadpic.png"},
      {name: "gold-screen", type:"image", src: "data/img/spend.png"},
+     {name: "load-screen", type:"image", src: "data/img/loadpic.png"},
+     {name: "new-screen", type:"image", src: "data/img/newpic.png"},
       // this line above, is where we are loading the image or "player" that we are using
 
 	/* Atlases 
