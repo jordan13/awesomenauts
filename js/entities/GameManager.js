@@ -311,3 +311,14 @@ game.GameTimerManager = Object.extend ({
 // We are setting up the names and buttons of these upgrades
 
 // we also added the cost and the current level for each of these upgrades or powerups
+
+// now we are going to set up our buttons to specific functions
+
+// checkBuyKeys only checks the key presses
+
+// we pass a prameter on checkCost so it is universal and it works on all skills 
+
+
+// if we do not have enough we will return false
+
+// your skill will have one added to it and multiply by 10
