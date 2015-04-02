@@ -58,3 +58,11 @@ game.NewProfile = me.ScreenObject.extend({
 // the newProfile screen now pops up when you click start a new game
 
 // the loadProfile screen now pops up when you click "CONTINUE"
+
+//right now we are creating more buttons
+
+// we made username and password bars
+
+// we also created 3 buttons ( register, load, and main menu 
+
+// we set the buttons to visibility on only for new profile and load profile
