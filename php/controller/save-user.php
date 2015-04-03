@@ -20,3 +20,16 @@ if($query){
 }else{
 	echo"<p>" . $_SESSION["connection"]->error . "</p>";
 }
+
+// session connection is basically our database
+
+// . combines things together
+
+// so far the only new file we messed with was save usep php
+
+// we are putting in 5 variables that are being passed through
+
+// we are updating the usertables
+
+// it will recognize our username
+ 
