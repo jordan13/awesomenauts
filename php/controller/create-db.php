@@ -2,29 +2,17 @@
      require_once(__DIR__ . "/../model/config.php");
      //  You are going back to the directory, to be directed to the model file.
 
-     // we do this to acces the session variable
-     $query = $_SESSION["connection"]->query("CREATE TABLE posts ("
-      . "id int(11) NOT NULL AUTO_INCREMENT,"
-      . "title varchar(255) NOT NULL,"
-      . "post text NOT NULL,"
-      . "DateTime datetime NOT NULL , "
-      . "PRIMARY KEY  (id))");
-
-       
-    if($query) {
-         echo "Succesfully created table: $posts";
-    }
-    else {
-        echo "<p>" . $_SESSION["connection"]->error . "</p>";
-        // we do the session var to connect to the connection variable
-    }
-
     $query = $_SESSION["connection"]->query("CREATE TABLE users ("
         . "id int(11) NOT NULL AUTO_INCREMENT,"
         . "username varchar(30) NOT NULL,"
         . "email varchar (50) NOT NULL,"
         . "password char(128) NOT NULL,"
         . "salt char(128) NOT NULL,"
+        . "exp int (4),"
+        . "exp1 int (4),"
+        . "exp2 int (4),"
+        . "exp3 int (4),"
+        . "exp4 int (4),"
         . "PRIMARY KEY (id))");
 
     if($query) {

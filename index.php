@@ -25,7 +25,7 @@
 			
 			<div class='password'>
 				<label for='password'>Password</label>
-				<input type='text' name='password' id='password'>
+				<input type='password' name='password' id='password'>
 			</div>
 			<button type='button' id='register'>Register</button>
 			<button type='button' id='load'>Load</button>
