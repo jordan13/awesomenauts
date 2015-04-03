@@ -40,3 +40,12 @@
 	else {
 		echo "<p> Invalid username and password</p>";
 	}
+// we are editing our php code from the blog
+
+// we are building an array in login-user.php
+
+// an array is a series of objects
+
+// $row is our users experience
+
+// json lets us echo an array as a statement
