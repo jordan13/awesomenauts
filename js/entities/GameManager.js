@@ -12,7 +12,7 @@
           }else if(game.data.win === false && !this.gameover) {
            this.gameOver(false);
           }
-
+           
           return true;
 
       },
