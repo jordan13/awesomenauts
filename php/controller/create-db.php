@@ -14,14 +14,7 @@
         . "exp3 int (4),"
         . "exp4 int (4),"
         . "PRIMARY KEY (id))");
-
-    if($query) {
-        echo "<p> Successfully created table: users</p>";
-    }
-    else {
-        echo "<p>" . $_SESSION["connection"]->error . "</p>";
-    }
-
+    
      // the reason why we are making them all NOT NULL is because we want them all to put out values
      // we make the user name NOT NULL so there is no blank usernames
      // auto increment sets the id number based on the previous one

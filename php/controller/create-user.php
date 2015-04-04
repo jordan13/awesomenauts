@@ -4,23 +4,20 @@
     $username = filter_input(INPUT_POST, "username", FILTER_SANITIZE_STRING);
     $password = filter_input(INPUT_POST, "password", FILTER_SANITIZE_STRING);
 
-    echo $password;
-
     $salt = "$5$" . "rounds=5000$" . uniqid(mt_rand(), true) . "$";
 
     $hashedPassword = crypt($password, $salt);
 
-    echo $hashedPassword;
 
     $query = $_SESSION["connection"]->query("INSERT INTO users SET "
-    	 . "username = '$username',"
+       . "username = '$username',"
     	 . "password = '$hashedPassword',"
     	 . "salt = '$salt',"
        . "exp = 0, "
        . "exp1 = 0, "
        . "exp2 = 0, "
        . "exp3 = 0, "
-       . "exp4 = 0, ");
+       . "exp4 = 0");
 
     $_SESSION["name"] = $username;
       
@@ -28,8 +25,7 @@
   if($query){
      //Need this for Ajax
      echo "true";
-  }
-  else {
+  }else {
   	echo"<p>" . $_SESSION["connection"]->error . "</p>";
   }
     // we are telling the crypt function to use the password and salt together
