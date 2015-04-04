@@ -154,3 +154,9 @@
 		</script>
 	</body>
 </html>
+// we are setting up the load function for users
+
+// The if else statement for load is going to basically be backwards
+
+// for the load function to work we also had to get rid of the p tags in the login-user php file
+
