@@ -33,6 +33,7 @@
       setPlayerTimers: function(){
       this.now = new Date().getTime();
       this.lastHit = this.now;
+      this.lastSpear = this.now;
       this.lastAttack = new Date().getTime();
       
       },
@@ -57,11 +58,9 @@
 
  	    update: function(delta){
  	    	this.now = new Date().getTime();
-
         this.dead = this.checkIfDead();
-
         this.checkKeyPressesAndMove();
-
+        this.checkAbilityKeys();
  	      this.setAnimation();
 
  	       me.collision.check(this, true, this.collideHandler.bind(this), true);
@@ -116,6 +115,25 @@
            this.body.vel.y = -this.body.maxVel.y * me.timer.tick;
             this.body.jumping = true;
         },
+
+        checkAbilityKeys() {
+          if(me.input.isKeyPressed("skill1")){
+            // this.speedBurst();
+          }else if (me.input.isKeyPressed("skill2")){
+            // this.eatCreep();
+          }else if (me.input.isKeyPressed("skill3")){
+            this.throwSpear();
+          }
+        
+      },
+
+    throwSpear: function(){
+      if(this.lastSpear >= game.data.spearTimer && game.data.ability3 >= 0) {
+        this.lastSpear = this.now;
+        var spear = me.pool.pull("spear", this.pos.x, this.pos.y, {});
+        me.game.world.addChild(spear, 10);
+      }
+    },
         setAnimation: function(){
                  if(this.attacking){
             if(!this.renderable.isCurrentAnimation("attack")){
@@ -146,7 +164,7 @@
  	    collideHandler: function(response){
  	    	if(response.b.type === 'EnemyBaseEntity'){
  	          this.collideWithEnemyBase(response);
- 	    }else if(response.b.type === 'EnemyCreep') {
+ 	    }else if(response.b.type ===  'EnemyCreep') {
             this.collideWithEnemyCreep(response);
       }
  	 },

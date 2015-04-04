@@ -10,6 +10,7 @@ var game = {
 		playerBaseHealth: 5,
 		enemyCreepHealth: 4,
 		playerHealth: 15,
+
 		enemyCreepAttack: 1,
 		playerAttack: 1,
 		playerAttackTimer: 1000,
@@ -18,6 +19,7 @@ var game = {
 		creepMoveSpeed: 5,
 		gameTimerManager: "",
 		gameHeroDeathManager: "",
+		spearTimer: 15,
 		player: "",
 		exp: 0,
 		gold: 0,
@@ -82,6 +84,7 @@ var game = {
 		me.pool.register("HeroDeathManager", game.HeroDeathManager);
 	    me.pool.register("ExperienceManager", game.ExperienceManager);
 	    me.pool.register("SpendGold", game.SpendGold);
+	    me.pool.register("spear", game.SpearThrow);
 
 		// this is adding our player to the pool of objects we can use
         // we are connecting our player to the player entity class we just built.
