@@ -160,3 +160,12 @@
 
  <!-- for the load function to work we also had to get rid of the p tags in the login-user php file -->
 
+ <!-- we changed the visibility to hidden from visibility -->
+
+ <!--  this gets rid off the bar from showing on the bottom -->
+
+ <!-- gamemanager is the file where we ill handle saving -->
+
+ <!-- we do not need to pass a username and passoword on gamemanager -->
+
+<!--  Number treats game.data.exp1 like a number -->
