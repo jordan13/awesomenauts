@@ -332,3 +332,10 @@
 // 2 is a sketchy parameter
 //we minimized our main functions that are being used to control the player
 // lengthening down our code is better for us when we are trying to check for any errors
+// We are setting up our code for SpearThrow
+
+// we set the velocity so that the spear can go fast and not fall
+
+//  we are setting up the spear to collide with the enemy base and the enemy creep
+
+// we have to set another variable so we can set the direction that the spea
