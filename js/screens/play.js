@@ -69,4 +69,10 @@ game.PlayScreen = me.ScreenObject.extend({
 
 });
 
+// we have linked our minimap image to our resources
 
+// next we are putting the minimaps info into game.js
+
+// our minimap is now in our pool
+
+// we are adding a high z level for the mini map also
