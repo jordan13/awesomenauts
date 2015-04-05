@@ -43,3 +43,5 @@ game.resources = [
 	 * {name: "example_sfx", type: "audio", src: "data/sfx/"}
 	 */
 ];
+
+// we took a screenshot of our map and will sonn make it show up in our game
