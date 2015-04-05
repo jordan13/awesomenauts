@@ -37,7 +37,8 @@ var game = {
 		win: "",
 		pausePos: "",
 		buyscreen: "",
-		buytext: ""
+		buytext: "",
+		minimap: ""
 
 
 	},
@@ -86,6 +87,7 @@ var game = {
 	    me.pool.register("ExperienceManager", game.ExperienceManager);
 	    me.pool.register("SpendGold", game.SpendGold);
 	    me.pool.register("spear", game.SpearThrow);
+	    me.pool.register("minimap", game.MiniMap, true);
 
 		// this is adding our player to the pool of objects we can use
         // we are connecting our player to the player entity class we just built.
