@@ -15,3 +15,6 @@ game.MiniMap = me.Entity.extend({
 	}
 });
 
+// we use x and y to build up our super
+
+// this.floating = true allows the map to follow the screens coordinates
