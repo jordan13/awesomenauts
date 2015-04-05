@@ -88,6 +88,7 @@ var game = {
 	    me.pool.register("SpendGold", game.SpendGold);
 	    me.pool.register("spear", game.SpearThrow);
 	    me.pool.register("minimap", game.MiniMap, true);
+	    me.pool.register("miniplayer", game.MiniPlayerLocation, true);
 
 		// this is adding our player to the pool of objects we can use
         // we are connecting our player to the player entity class we just built.
@@ -105,3 +106,4 @@ var game = {
 	}
 };
 // we dont need to set the player base to true because there is only one
+
