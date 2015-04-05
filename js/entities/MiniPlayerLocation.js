@@ -53,3 +53,17 @@ game.MiniPlayerLocation = me.Entity.extend({
 	}
 
 });
+
+// now we are going to display the player location on our minimap
+
+// we have to regester our miniplayerlocation on our index.php
+
+// we have also registered our class in game.js
+
+// r represents the radius for our circle
+
+// 0.75 in miniplayerlocation controls the opacity
+
+// the stroke is the line that goes around the circle
+
+// this. floating allows the dot to follow you on the screen
