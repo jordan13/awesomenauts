@@ -96,7 +96,7 @@
 				}
 			});
 		</script>
-
+     
 		<script>
 		$("#mainmenu").bind("click", function(){
 			me.state.change(me.state.MENU);

@@ -3,8 +3,8 @@
     	this.setSuper(x, y);
       this.setPlayerTimers();
       this.setAttributes ();
-      this.type = "PlayerEntity";
       this.setFlags();
+      this.type = "PlayerEntity";
     
     	me.game.viewport.follow(this.pos, me.game.viewport.AXIS.BOTH);
     	
@@ -26,9 +26,9 @@
         getShape: function() {
          return(new me.Rect(0, 0, 64, 64)).toPolygon();
           }
-    }]);
+      }]);
 
-      },
+    },
 
       setPlayerTimers: function(){
       this.now = new Date().getTime();
@@ -57,7 +57,7 @@
       },
 
  	    update: function(delta){
- 	    	this.now = new Date().getTime();
+        this.now = new Date().getTime();
         this.dead = this.checkIfDead();
         this.checkKeyPressesAndMove();
         this.checkAbilityKeys();
@@ -186,6 +186,7 @@
            }
             if(this.renderable.isCurrentAnimation("attack") && this.now-this.lastHit >= game.data.playerAttackTimer){
              this.lastHit = this.now;
+             game.data.gold += 1;
              response.b.loseHealth(game.data.playerAttack);
         }
 
@@ -220,8 +221,8 @@
         checkAttack: function(xdif, ydif){
               if(this.renderable.isCurrentAnimation('attack') && this.now-this.lastHit >= game.data.playerAttackTimer
               && (Math.abs(ydif) <=40) && 
-              (((xdif>0) && this.facing==="left") || ((xdif<0) && this.facing==="right")))
-          {
+              (((xdif>0) && this.facing==="left") || ((xdif<0) && this.facing==="right"))
+              ){
             this.lastHit = this.now;
             // if the creeps health is less then our attack excecute code in if statement
             return true;

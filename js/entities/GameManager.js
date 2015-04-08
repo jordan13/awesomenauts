@@ -1,10 +1,17 @@
-
-    game.ExperienceManager = Object.extend({
+    game.GameTimerManager = Object.extend({
       init: function(x, y, settings){
         this.alwaysUpdate = true;
-        this.gameover = false;
-
+        this.now = new Date().getTime();
+        this.lastCreep = new Date().getTime();
+        this.paused = false;
+        this.alwaysUpdate = true;
       },
+
+      game.ExperienceManager = Object.extend({
+          init: function(x, y, settings){
+            this.alwaysUpdate = true;
+            this.gameover = false;
+          },
 
         update: function () {
           if(game.data.win === true && !this.gameover){
@@ -14,6 +21,8 @@
            this.gameOver(false);
            alert("HAHA YOU LOSE!!!");
           }
+
+          console.log(game.data.exp);
 
           return true;
 
@@ -25,8 +34,11 @@
         }else{
           game.data.exp += 1;
         }
+         console.log(game.data.exp);
          this.gameover = true;
          me.save.exp = game.data.exp;
+         // for testing only
+         me.save.exp2 = 4;
 
       $.ajax({
         type: "POST", 

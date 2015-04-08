@@ -95,6 +95,7 @@ game.EnemyCreep = me.Entity.extend({
 	update: function(delta){
     if(this.health <= 0){
        me.game.world.removeChild(this);
+       game.data.exp += 1;
     }
     this.now = new Date().getTime();
     this.body.vel.x -= this.body.accel.x * me.timer.tick;

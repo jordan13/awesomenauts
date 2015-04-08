@@ -8,10 +8,10 @@ var game = {
 		score : 0, 
 		option1: "",
 		option2: "",
-		enemyBaseHealth: 1,
-		playerBaseHealth: 5,
-		enemyCreepHealth: 4,
-		playerHealth: 15,
+		enemyBaseHealth: 3,
+		playerBaseHealth: 10,
+		enemyCreepHealth: 3,
+		playerHealth: 20,
 		enemyCreepAttack: 1,
 		playerAttack: 1,
 		playerAttackTimer: 1000,
@@ -60,12 +60,16 @@ var game = {
 			});
 		}
 		
+
+		console.log(game.data.exp);
+		console.log(game.data.exp2);
+
 		me.state.SPENDEXP = 112;
 		me.state.LOAD = 113;
 		me.state.NEW = 114;
 
 		// Initialize the audio.
-		me.audio.init("mp3.episode,ogg");
+		me.audio.init("mp3,ogg");
 
 		// Set a callback to run when loading is complete.
 		me.loader.onload = this.loaded.bind(this);

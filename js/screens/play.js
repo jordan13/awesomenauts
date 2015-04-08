@@ -6,6 +6,8 @@ game.PlayScreen = me.ScreenObject.extend({
 		me.audio.playTrack('c4');
 		// reset the score
 		game.data.score = 0;
+		console.log(game.data.exp);
+		console.log(game.data.exp2);
 
 
 		me.levelDirector.loadLevel("level01")
